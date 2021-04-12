@@ -1,13 +1,18 @@
-import React from 'react';
+import React from 'react'
+import Result from './components/Result'
+import Button from './components/Button'
 import './App.css';
-import Result from './components/Result';
+
+const clickHandlerFunction = text => {
+    console.log("Button.clickHandler1", text)
+}
 
 const App = () => {
     return (
         <main className="react-calculator">
             <Result value={0}/>
-            <div className="numbers">
-                <button>1</button>
+            <div className="numbers" >
+                <Button text="1" clickHandler={clickHandlerFunction}/>
                 <button>2</button>
                 <button>3</button>
                 <button>4</button>

@@ -11,8 +11,12 @@ const Result = ({ value }) => {//Destructuring directo en los parametros
     )
 }
 
-Result.PropTypes = {
+Result.propTypes = {
     value : PropTypes.string.isRequired
+}
+
+Result.defaultProptypes = {
+    value : "0"
 }
 
 export default Result
