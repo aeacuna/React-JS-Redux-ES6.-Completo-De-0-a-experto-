@@ -1,6 +1,6 @@
-import React from 'react'
-import Result from './components/Result'
 import Button from './components/Button'
+import MathOperations from './components/MathOperations'
+import Result from './components/Result'
 import './App.css';
 
 const clickHandlerFunction = text => {
@@ -10,7 +10,7 @@ const clickHandlerFunction = text => {
 const App = () => {
     return (
         <main className="react-calculator">
-            <Result value={0}/>
+            <Result value={undefined}/>
             <div className="numbers" >
                 <Button text="1" clickHandler={clickHandlerFunction}/>
                 <button>2</button>
@@ -27,13 +27,7 @@ const App = () => {
                 <button>Clear</button>
                 <button>Remove</button>
             </div>
-            <div className="math-operations">
-                <button>+</button>
-                <button>-</button>
-                <button>*</button>
-                <button>/</button>
-                <button>=</button>
-            </div>
+            <MathOperations />
         </main>)
 }
 

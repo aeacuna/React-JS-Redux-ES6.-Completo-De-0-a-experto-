@@ -1,12 +1,15 @@
-const Button = ( {type, text, clickHandler} ) => {
-    return (
-        <button className="{type}" onClick={() => {
-            console.log("on click en el button")
-            clickHandler(text)     
-        }}>
-            <span >{text}</span>
-        </button>
-    )
+import PropTypes from 'prop-types'
+
+const Button = ( {type, text, clickHandler} ) => (
+    <button className="{type}" onClick={() =>  clickHandler(text) }>
+        <span >{text}</span>
+    </button>
+)
+
+Button.propTypes = {
+    type : PropTypes.string.isRequired,
+    text : PropTypes.string.isRequired,
+    clickHandler : PropTypes.func.isRequired
 }
 
 export default Button
