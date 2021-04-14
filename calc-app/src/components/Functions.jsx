@@ -3,7 +3,7 @@ import Button from './Button'
 
 const Functions = ( {onContentClear, onDelete} ) => (
     <section className="functions"> 
-        <Button text ="Clear" clickHandler={onContentClear} />
+        <Button type="button-long-text" text ="Clear" clickHandler={onContentClear} />
         <Button text ="&larr;" clickHandler={onDelete} />
     </section>
 
