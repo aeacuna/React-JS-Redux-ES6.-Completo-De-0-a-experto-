@@ -1,18 +1,23 @@
+/* eslint no-eval : 0*/
+import { useState } from 'react'
+import words from 'lodash.words'
 import Function from './components/Functions'
 import MathOperations from './components/MathOperations'
-import Numbers from './components/Numbers';
+import Numbers from './components/Numbers'
 import Result from './components/Result'
 import './App.css';
-import { useState } from 'react';
 
 const App = () => {
     const [stack, setStack] = useState("")
     //const texto = arrayTextoFuncionModificaTexto[0]
     //const funcionModificaTexto = arrayTextoFuncionModificaTexto[1]
-
+    const regex = /[^-^+^*^/]+/g
+    const items = words(stack, regex)
+    console.log("Renderización de App", items)
+    const value = items.length > 0 ? items[items.length-1] : "0"
     return (
         <main className="react-calculator">
-            <Result value={stack}/>
+            <Result value={value}/>
                 <Numbers 
                     onClickNumber={number => {
                         console.log(number)
@@ -24,9 +29,11 @@ const App = () => {
                     setStack(' ')
                 }}
                 onDelete={() => {
-                    console.log("Content Delete")
-                    const newStack = stack.substring(0, stack.length-1)
-                    setStack(newStack)
+                    if(stack.length > 0 ) {
+                        console.log("Content Delete")
+                        const newStack = stack.substring(0, stack.length-1)
+                        setStack(newStack)
+                    }
                 }}/>
             <MathOperations 
                 onClickOperation={operation => {
@@ -35,7 +42,7 @@ const App = () => {
                 }}
                 onClickEqual={equal => {
                     console.log("equal :",equal)
-                    setStack(`${stack}${equal}`)
+                    setStack(eval(stack).toString())
                 }}/>
         </main>)
 }
